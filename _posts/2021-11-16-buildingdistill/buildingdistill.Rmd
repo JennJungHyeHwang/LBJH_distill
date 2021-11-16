@@ -1,0 +1,21 @@
+---
+title: "Building a {distill} website"
+description: |
+  WHAT IS THIS?!
+author:
+  - name: Jenn Hwang
+date: 11-16-2021
+preview: distilldeathrate.jpg
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+idk what dis is.
+
+
