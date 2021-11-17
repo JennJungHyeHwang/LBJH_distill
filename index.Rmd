@@ -1,7 +1,7 @@
 ---
 title: "Lindsay and Jenn's Group Project"
 description: |
-  This project is an analysis of variables relating to vaccinated people within a country. 
+  This project is an analysis of variables relating to vaccinated people within a continent. We will mainly be focused on: North America, South America, Asia, Europe, and Africa. 
 site: distill::distill_website
 ---
 
