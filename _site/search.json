@@ -5,7 +5,7 @@
       "title": "Untitled",
       "author": [],
       "contents": "\nMortality Rate\nStem Majors\nIncome Support\nStay at Home Requirements\nFace Covering Policies\nNew Daily Confirmed Deaths\nPoverty Rate\n\n\n\n",
-      "last_modified": "2021-11-16T05:03:54+00:00"
+      "last_modified": "2021-11-17T20:58:52+00:00"
     },
     {
       "path": "index.html",
@@ -13,7 +13,7 @@
       "description": "This project is an analysis of variables relating to vaccinated people within a country. \n",
       "author": [],
       "contents": "\n\n\n\n\n",
-      "last_modified": "2021-11-16T05:03:54+00:00"
+      "last_modified": "2021-11-17T20:58:53+00:00"
     }
   ],
   "collections": ["posts/posts.json", "graphs/graphs.json"]
