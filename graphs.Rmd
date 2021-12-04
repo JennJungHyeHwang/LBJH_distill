@@ -1,18 +1,113 @@
 ---
-title: "Untitled"
+title: "Statistical Data"
 listing: graphs
 ---
 
+```{r packages, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+```
+
 ## Mortality Rate
+```{r}
+library(readxl)
+install.packages("viridis")
+library(viridis)
+install.packages("scales")
+library(scales)
+Pivot_Vaccination <- read_excel("Pivot_Vaccination.xlsx")
+ ggplot(Pivot_Vaccination, aes(x=Month_of_Death, y=Death_Count, group=Country, color=Country)) +
+    geom_line() +
+    scale_y_continuous(label = label_number_si()) +
+    scale_color_viridis(discrete = TRUE) +
+    ggtitle("Covid Mortality Rate") +
+    ylab("Number of Deaths")
+```
+
+
+## Average Years of Schooling per Continent
+
+```{r average education in years in different continents and reading in data from excel file}
+Average_years_of_education2 <- read_excel("Average_years_of _education2.xlsx")
+ggplot() +
+  geom_point(Average_years_of_education2, 
+       mapping= aes(x = Continent, y = Year_of_2020 , color = Continent))
+```
+
 
 ## Stem Majors
+```{r stem majors 2020 by country}
+stem_majors_2020_by_country <- read_excel("stem majors 2020- by country.xlsx")
+ggplot() +
+  geom_point(stem_majors_2020_by_country, 
+       mapping= aes(x = Country_stem, y = Share_of_Graduates, color = Country_stem ))
+```
+
+```{r}
+stem_majors_2020_by_country <- read_excel("stem majors 2020- by country.xlsx")
+ggplot() +
+  geom_point(stem_majors_2020_by_country, 
+       mapping= aes(x = Country_stem, y = Total_Graduates, color=Country_stem ))
+```
 
 ## Income Support
+```{r}
+income_mask_sah <- read_excel("income_mask_sah.xlsx")
+ggplot() +
+  geom_point(income_mask_sah, 
+       mapping= aes(x = Country, y = Amount_of_Income_Support, color=Country))
+```
+
 
 ## Stay at Home Requirements
+```{r}
+income_mask_sah <- read_excel("income_mask_sah.xlsx")
+ggplot() +
+  geom_point(income_mask_sah, 
+       mapping= aes(x = Country, y = Stay_at_home_requirements))
+```
+
+
+##Vaccination Data
+```{r}
+library(readxl)
+Vaccination_percentages <- read_excel("Vaccination_percentages.xlsx")
+
+p<-ggplot(Vaccination_percentages, aes(x= Continent,
+                                       y= Rate,
+                                       fill= Percentage_Type
+))
+p +
+   geom_bar(stat = "identity", 
+            width = 0.6,      
+            color = "black",  
+            size = 0.5,         
+            alpha = 0.7) +    
+   theme_minimal()+           
+   theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +                         
+   labs(x= "Continent", y = "Rate", title = "Percentages of Continents Vaccinated",
+        caption = "ourworld.org data")+  
+   geom_text(aes(label = Rate), position = position_stack(vjust = 0.5), size = 3) 
+ 
+```
+
 
 ## Face Covering Policies
+```{r}
+income_mask_sah <- read_excel("income_mask_sah.xlsx")
+ggplot() +
+  geom_point(income_mask_sah, 
+       mapping= aes(x = Country, y = Mask_Mandates))
+```
 
-## New Daily Confirmed Deaths 
 
 ## Poverty Rate
+```{r}
+povertyrate <- read_excel("povertyrate.xlsx")
+ggplot() +
+  geom_point(povertyrate, 
+       mapping= aes(x = Pov_rate, y = Continents))
+```
+
