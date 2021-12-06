@@ -4,8 +4,8 @@
       "path": "graphs.html",
       "title": "Statistical Data",
       "author": [],
-      "contents": "\nMortality Rate\nAverage Years of Schooling per Continent\n\n\n\nStem Majors\n\n\n\n\n\n\nIncome Support\n\n\n\nStay at Home Requirements\n\n\n\n##Vaccination Data\nFace Covering Policies\n\n\n\nPoverty Rate\n\n\n\n",
-      "last_modified": "2021-11-29T23:30:13+00:00"
+      "contents": "\nMortality Rate\n\n\n\n##Vaccination Data\nAverage Years of Schooling per Continent\n\n\n\nStem Majors\n\n\n\n\n\n\nIncome Support\n\n\n\nStay at Home Requirements\n\n\n\n##Vaccination Data\n\n\n\nFace Covering Policies\n\n\n\nPoverty Rate\n\n\n\n\n\n\n",
+      "last_modified": "2021-12-06T23:41:44+00:00"
     },
     {
       "path": "index.html",
@@ -13,7 +13,7 @@
       "description": "This project is an analysis of variables relating to vaccinated people within a continent. We will mainly be focused on: North America, South America, Asia, Europe, and Africa. \n",
       "author": [],
       "contents": "\n\n\n\n\n\n\n",
-      "last_modified": "2021-11-29T23:30:13+00:00"
+      "last_modified": "2021-12-06T23:41:44+00:00"
     }
   ],
   "collections": ["posts/posts.json", "graphs/graphs.json"]
