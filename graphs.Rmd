@@ -26,7 +26,6 @@ Pivot_Vaccination <- read_excel("Pivot_Vaccination.xlsx")
     labs(y= "Number of Deaths", x="Month")
 ```
 
-##Vaccination Data
 
 ## Average Years of Schooling per Continent
 
@@ -46,7 +45,7 @@ ggplot() +
        mapping= aes(x = Country_stem, y = Share_of_Graduates, color = Country_stem )) + ggtitle("Share of Graduates in STEM field in each Country") +labs(x="Country", y= "Share of Graduates in stem field")
 ```
 
-```{r}
+```{r stem}
 stem_majors_2020_by_country <- read_excel("stem majors 2020- by country.xlsx")
 ggplot() +
   geom_point(stem_majors_2020_by_country, 
@@ -71,7 +70,7 @@ ggplot() +
 ```
 
 
-##Vaccination Data
+## Vaccination Data
 
 ```{r vaccination percentages as a stacked bar graph}
 library(readxl)
@@ -101,7 +100,7 @@ p +
 income_mask_sah <- read_excel("income_mask_sah.xlsx")
 ggplot() +
   geom_point(income_mask_sah, 
-       mapping= aes(x = Country, y = Mask_Mandates, color= Mask_Mandates))
+       mapping= aes(x = Mask_Mandates, y = Country, color= Mask_Mandates)) + labs(y= "Mask Requirements", )
 ```
 
 

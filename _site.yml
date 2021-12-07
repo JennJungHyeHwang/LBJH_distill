@@ -1,10 +1,10 @@
 name: "website"
 title: "Lindsay and Jenn's Group Project"
 description: |
-  "This project is an analysis of variables relating to vaccinations, covid deaths, mandates, and STEM majors between continents. We will specifically be focused on:
- North America, South America, Europe, Asia, And Africa. When we are looking at total data we will be focused on February 2021 until Now (November 2021). We will define the time period
+  This project is an analysis of variables relating to vaccinations, covid deaths, mandates, and STEM majors between continents. We will specifically be focused on:
+  North America, South America, Europe, Asia, And Africa. When we are looking at total data we will be focused on February 2021 until Now (November 2021). We will define the time period
   we are comparing along with the graphical data. We also have data for the __ countries with the largest numbers of graduates in the STEM field, we then relate those countries to their continents
-  to portray our overall relationship."
+  to portray our overall relationship. 
 output_dir: "_site"
 navbar:
   right:

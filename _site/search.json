@@ -4,16 +4,16 @@
       "path": "graphs.html",
       "title": "Statistical Data",
       "author": [],
-      "contents": "\nMortality Rate\n\n\n\n##Vaccination Data\nAverage Years of Schooling per Continent\n\n\n\nStem Majors\n\n\n\n\n\n\nIncome Support\n\n\n\nStay at Home Requirements\n\n\n\n##Vaccination Data\n\n\n\nFace Covering Policies\n\n\n\nPoverty Rate\n\n\n\n\n\n\n",
-      "last_modified": "2021-12-06T23:41:44+00:00"
+      "contents": "\nMortality Rate\n\n\n\nAverage Years of Schooling per Continent\n\n\n\nStem Majors\n\n\n\n\n\n\nIncome Support\n\n\n\nStay at Home Requirements\n\n\n\nVaccination Data\n\n\n\nFace Covering Policies\n\n\n\nPoverty Rate\n\n\n\n\n\n\n",
+      "last_modified": "2021-12-06T23:56:01+00:00"
     },
     {
       "path": "index.html",
       "title": "Lindsay and Jenn's Group Project",
-      "description": "This project is an analysis of variables relating to vaccinated people within a continent. We will mainly be focused on: North America, South America, Asia, Europe, and Africa. \n",
+      "description": "This project is an analysis of variables relating to vaccinations, covid deaths, mandates, and STEM majors between continents. We will specifically be focused on:\nNorth America, South America, Europe, Asia, And Africa. When we are looking at total data we will be focused on February 2021 until Now (November 2021). We will define the time period\nwe are comparing along with the graphical data. We also have data for the countries with the largest numbers of graduates in the STEM field, we then relate those countries to their continents\nto portray our overall relationship. \n",
       "author": [],
       "contents": "\n\n\n\n\n\n\n",
-      "last_modified": "2021-12-06T23:41:44+00:00"
+      "last_modified": "2021-12-06T23:56:01+00:00"
     }
   ],
   "collections": ["posts/posts.json", "graphs/graphs.json"]
