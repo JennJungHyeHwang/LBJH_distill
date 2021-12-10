@@ -1,0 +1,37 @@
+---
+title: "shiny"
+author: "snowbcat"
+date: "12/9/2021"
+output: html_document
+---
+
+```{r packages, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+library(sf) #spatial data
+library(tigris) #geojoin
+library(leaflet) #interaction map
+library(htmlwidgets) #interaction map labels
+library(dplyr)
+```
+
+
+
+## Number of Partially/Fully Vaccinated Individuals in Each Continent for 2021 
+```{r read in data}
+Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
+```
+
+Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx") %>%
+  leaflet() %>%
+  addProviderTiles(provider = "CartoDB.Positron") %>% 
+  addPolygons(label = Vaccination_Across_Months_2_,
+              stroke = FALSE,
+              smoothFactor = 0.5,
+              opacity = 1, 
+              fillOpacity = 0.7, 
+              fillColor = ~ pal(caserate),
+              highlightOptions = highlightOptions(weight = 5, 
+                                                  fillOpacity = 1,
+                                                  color = "black",
+                                                  opacity = 1, 
+                                                  bringToFront = TRUE))

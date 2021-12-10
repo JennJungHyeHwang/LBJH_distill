@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-![](covid.png)
+![](covid19africa.jpg)
 ```{r packages}
 library(tidyverse)
 library(readxl)
