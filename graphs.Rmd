@@ -32,8 +32,8 @@ Pivot_Vaccination <- read_excel("Pivot_Vaccination.xlsx")
 ```{r average education in years in different continents and reading in data from excel file}
 Average_years_of_education2 <- read_excel("Average_years_of _education2.xlsx")
 ggplot() +
-  geom_point(Average_years_of_education2, 
-       mapping= aes(x = Continent, y = Year_of_2020 , color = Continent))+ ggtitle ("Average years of education for each Continent") + labs(y= "Average Years of Education Provided")
+  geom_col(Average_years_of_education2, 
+       mapping= aes(x = Continent, y = Year_of_2020 ,  fill= Continent))+ ggtitle ("Average years of education for each Continent") + labs(y= "Average Years of Education Provided")
 ```
 
 
