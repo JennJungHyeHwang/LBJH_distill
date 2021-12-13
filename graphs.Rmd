@@ -9,24 +9,15 @@ library(tidyverse)
 library(readxl)
 library(ggplot2)
 library(forcats)
+library(dplyr)
+library(scales)
+library(sp)
+library(rgdal)
+library(sf)
+library(leaflet)
+library(shiny)
 ```
 
-## Mortality Rate
-```{r mortality rate with ggplot and geom line with discrete variables}
-library(readxl)
-# install.packages("viridis")
-library(viridis)
-# install.packages("scales")
-library(scales)
-Morality_Rate <- read_excel("Morality_Rate.xlsx")
- ggplot(Morality_Rate, aes(x= fct_inorder(Month_of_Death), y=Death_Count, group=Continent, color=Continent)) +
-    geom_line() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
-    scale_y_continuous(label = label_number_si()) +
-    scale_color_viridis(discrete = TRUE) +
-    ggtitle("Covid Mortality Rate for Each Continent in 2021") +
-    labs(y= "Number of Deaths", x="Month")
-```
-As for Confirmed deaths and mortality we once again start our data in February of 2021 and end our data in November of 2021. For this graph we wanted to show the trend of the deaths for each continent and we used a specific code to show this representation. We began February with the total deaths confirmed up to that point and continued with the total death trend until reaching November 1st. We found it interesting to see that some of the trends overlapped and surpassed other countries. This could be due to the lack of vaccinations or requirements during that period of time.
 
 ## Average Years of Schooling per Continent
 
@@ -39,7 +30,9 @@ ggplot(Average_years_of_education2, aes(x = Continent, y = Year_of_2020, fill= C
 
   
 ```
+
 In each country there are different years of education and quality of education given, this is another reason why we focused on the 9 countries that would align best with what we wanted to represent and those who had the most comparable data. We have a small bar chart representing the continents we are focused on and the average number of years of education given in the year of 2020.
+
 
 ```{r 5 num summary }
 data <- c(4.3,8.8,10.4,12,7,13.4)
@@ -52,6 +45,15 @@ med: 9.6
 Q3: 12.0
 max: 13.4
 
+## Poverty Rate
+```{r poverty rate}
+povertyrate <- read_excel("povertyrate.xlsx")
+ggplot() +
+  geom_col(povertyrate, 
+       mapping= aes(x = Pov_rate, y = Continents, fill= Continents)) + labs(x="Poverty Rate (%)") + ggtitle("Poverty Rate , 2021") +ggtitle("Poverty Rate in Each Country for 2020")
+```
+For the poverty graph we once again went back to the 5 main continents and gathered data for their total population of the continent in 2019, the number of individuals in poverty in 2020, and the poverty rate percentage in 2020. This table was made to once again look at the poverty rate and if there was a trend seen fodatar the number of college graduates for each continent or vaccination percentage in relation to poverty in that continent. The poverty threshold was determined as the minimum amount of income deemed adequate to live off of in that continent. 
+
 ## Stem Majors
 
 ```{r stem majors 2020 by country}
@@ -62,11 +64,12 @@ ggplot(stem_majors_2020_by_country,
   ggtitle("Share of Graduates in STEM Field in Each Country (%) for 2020") +
   labs(x="Country", y= "Share of Graduates in stem field (%)") +   geom_text(aes(label=Share_of_Graduates), vjust= -0.2)
 ```
-For the STEM majors, we couldn't find specific data for the share of graduates from each continent so instead we researched the largest amount of graduates globally in 2020 (the most recent data collected) and looked at what countries had the largest share of graduates. We found the top 9 countries globally and collected that data, each continent was represented at least once so we are using that data as our sample representation for the continent. We also color coordinated the graphs to each continent so you can see the share from each. 
+
+For the STEM majors, we couldn't find specific data for the share of graduates from each continent so instead we researched the largest amount of graduates globally in 2020 (the most recent data collected) and looked at what countries had the largest share of graduates. We found 9 countries of interest globally and collected that data, each continent was represented at least once so we are using that data as our sample representation for the continent. We also color coordinated the graphs to each continent so you can see the share from each. 
 We then took those countries from each continent and found the percent share of the graduates that majored in science, technology, engineering, or math. For example we used Tunisia for a representation of the most educated (in STEM) for Africa, Germany, Russia, and The United Kingdom were represented for Europe, The United states was represented for North America, Brazil was represented for South America, and Singapore, India, and China were represented for Asia. 
 
 
-```{r}
+```{r stem graduates per country}
 stem_majors_2020_by_country <- read_excel("stem majors 2020- by country.xlsx")
 ggplot() +
   geom_point(stem_majors_2020_by_country, 
@@ -76,13 +79,14 @@ ggplot() +
 Once we collected the data on the percentage of graduates in stem for each country AND the number of graduates in stem for each country we were able to have a rough estimate of the total number of graduates from any institution in any field in 2020. We believe that this information is important because we wanted to look at the relationship between the number of higher educated individuals coming out of each country and their amount of income support, mask mandates, poverty rate and how they were going about the absence of spreading the virus (stay at home requirements).
 
 ## Income Support
-```{r}
+```{r income support}
 income_mask_sah <- read_excel("income_mask_sah.xlsx")
 ggplot() +
   geom_point(income_mask_sah, 
        mapping= aes(x = Country, y = Amount_of_Income_Support, color=Country))+ labs(y="Amount of Income support (<50%, >50%, or NONE)") +
    ggtitle("Income Support in Each Country for February, 2021")
 ```
+
 Income support for our project is defined as the relative or amount of income or percentage of income that would be reimbursed for those who lost their job, lost pay, were on unemployment, or those who had to miss work due to the virus (quarantine or exposure) in February of 2021. We used data from February because this is when all continents had the same amount of access to the vaccine and when the virus was at its most deadly without the vaccine. We once again specifically focused on the 9 countries that had the highest number of STEM graduates. There were three categories for income support: less than 50% (less that 50% of the lost wages were returned to the individual), greater than 50% (greater than than 50% of the lost wages were returned to the individual) or none (no loss of wages were reimbursed to the individual. We wanted to look at these countries specifically to see if there was a relationship between the amount of income recovered and the STEM graduates, the stay at home requirements, and the mask mandates. 
 
 
@@ -95,7 +99,18 @@ ggplot() +
    ggtitle("") +
    ggtitle("Stay at Home Requirements in Each Country for February, 2021")
 ```
+
 The stay at home requirements had three categories beginning with Required (except essentials) meaning it was required to stay at home unless you were commuting to school, work, or store, recommended (meaning you should be in your home but you are free to go out and about as needed) and none, meaning there was no requirement to stay at home during this time. For the 9 countries there were stay at home restrictions for each of them even if the continent as a whole had more lenient rules. 
+
+## Face Covering Policies
+```{r mask mandates}
+income_mask_sah <- read_excel("income_mask_sah.xlsx")
+ggplot() +
+  geom_point(income_mask_sah, 
+       mapping= aes(x = Mask_Mandates, y = Country, color= Mask_Mandates)) + labs(y= "Mask Requirements", )  + scale_x_discrete(guide=guide_axis(angle=90)) + ggtitle("Mask Mandates in Each Country for Feb, 2021")
+```
+
+As for the mask mandates there were also three categories which are pretty self explanatory, required outside the home at all times, required in all public spaces, and not required. We once again see that in these 9 countries we have found to have the highest level of stem graduates that there we at least some sort of mask mandate throughout the country. This was a relief to see that the higher educated STEM graduates were also leading in the safety of their country.
 
 ## Vaccination Data
 
@@ -116,75 +131,98 @@ p +
   scale_fill_brewer(palette= "Set3", name="Percent Vaccination", labels =c("Percent Fully Vaccinated", "Percent Partially Vaccinated"))
  
 ```
+
 Above We have data for the percent fully vaccinated, percent partially vaccinated, number of fully vaccinated individuals and number of partially vaccinated individuals in November to show how far we have come in our vaccinations.
 
-```{r}
+```{r fully vaccinated from feb to november}
 library(readxl)
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
  ggplot(Vaccination_Across_Months_2_, aes( x= fct_inorder(Month_of_Death), y=Fully_Vaccinated, group=Continent, color=Continent)) +
     geom_line() +   theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
-    scale_color_viridis(discrete = TRUE) +
     ggtitle("Number of Fully Vaccinated individuals in Each Continent for 2021") +
     labs(y= "Number of Fully Vaccinated ", x="Month")
 
  
 ```
+
 This graph displays the Number of  cumulative fully vaccinated individuals in each continent that continues to be on a positive trend as we would expect. 
 
 ```{r vaccination data feb to november}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
- ggplot(Pivot_Vaccination, aes(x= fct_inorder(Month_of_Death), y=Partially_Vaccinated, group=Continent, color=Continent)) +
+ ggplot(Vaccination_Across_Months_2_, aes(x= fct_inorder(Month_of_Death), y=Partially_Vaccinated, group=Continent, color=Continent)) +
     geom_line() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
-    scale_color_viridis(discrete = TRUE) +
+
     ggtitle("Number of Partially Vaccinated Individuals in Each Continent for 2021") +
     labs(y= "Number of Partially Vaccinated ", x="Month")
 
 ```
+
 This graph displays the Number of  cumulative partially vaccinated individuals in each continent that continues to be on a positive trend as we would expect. 
 
-```{r}
+```{r boxplot fully vaccinated individuals}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
- ggplot(Vaccination_Across_Months_2_, aes(x=Month_of_Death, y=Fully_Vaccinated, group=Continent, color=Continent)) +
+ ggplot(Vaccination_Across_Months_2_, aes(x=fct_inorder(Month_of_Death), y=Fully_Vaccinated, group=Continent, color=Continent)) +
     geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
-    scale_color_viridis(discrete = TRUE) +
     ggtitle("Number of Fully Vaccinated individuals in Each Continent for 2021") +
     labs(y= "Number of Fully Vaccinated ", x="Month")
 
 ```
 
-```{r}
+This graph shows a boxplot for the fully vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same. 
+
+```{r boxplot partially vaccinated individuals}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
- ggplot(Pivot_Vaccination, aes(x=Month_of_Death, y=Partially_Vaccinated, group=Continent, color=Continent)) +
+ ggplot(Vaccination_Across_Months_2_, aes(x= fct_inorder(Month_of_Death), y=Partially_Vaccinated, group=Continent, color=Continent)) +
     geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
-    scale_color_viridis(discrete = TRUE) +
     ggtitle("Number of Partially Vaccinated Individuals in Each Continent for 2021") +
     labs(y= "Number of Partially Vaccinated ", x="Month")
 ```
 
+This graph shows a boxplot for the partially vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same, except for Asia which has a much higher median throughout the months.  
 
-
-## Face Covering Policies
-```{r}
-income_mask_sah <- read_excel("income_mask_sah.xlsx")
-ggplot() +
-  geom_point(income_mask_sah, 
-       mapping= aes(x = Mask_Mandates, y = Country, color= Mask_Mandates)) + labs(y= "Mask Requirements", )  + scale_x_discrete(guide=guide_axis(angle=90)) + ggtitle("Mask Mandates in Each Country for Feb, 2021")
+## Mortality Rate
+```{r mortality rate with ggplot and geom line with discrete variables}
+library(readxl)
+# install.packages("viridis")
+library(viridis)
+# install.packages("scales")
+library(scales)
+Morality_Rate <- read_excel("Morality_Rate.xlsx")
+ ggplot(Morality_Rate, aes(x= fct_inorder(Month_of_Death), y=Death_Count, group=Continent, color=Continent)) +
+    geom_line() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
+    scale_y_continuous(label = label_number_si()) +
+    ggtitle("Covid Mortality Rate for Each Continent in 2021") +
+    labs(y= "Number of Deaths", x="Month")
 ```
-As for the mask mandates there were also three categories which are pretty self explanatory, required outside the home at all times, required in all public spaces, and not required. We once again see that in these 9 countries we have found to have the highest level of stem graduates that there we at least some sort of mask mandate throughout the country. This was a relief to see that the higher educated STEM graduates were also leading in the safety of their country.
 
+As for Confirmed deaths and mortality we once again start our data in February of 2021 and end our data in November of 2021. For this graph we wanted to show the trend of the deaths for each continent and we used a specific code to show this representation. We began February with the total deaths confirmed up to that point and continued with the total death trend until reaching November 1st. We found it interesting to see that some of the trends overlapped and surpassed other countries. This could be due to the lack of vaccinations or requirements during that period of time.
 
-## Poverty Rate
-```{r}
-povertyrate <- read_excel("povertyrate.xlsx")
-ggplot() +
-  geom_col(povertyrate, 
-       mapping= aes(x = Pov_rate, y = Continents, fill= Continents)) + labs(x="Poverty Rate (%)") + ggtitle("Poverty Rate , 2021") +ggtitle("Poverty Rate in Each Country for 2020")
+```{r boxplot for mortality rates at different points in the year}
+Morality_Rate <- read_excel("Morality_Rate.xlsx")
+ ggplot(Morality_Rate, aes(x= fct_inorder(Month_of_Death), y=Death_Count, group=Continent, color=Continent)) +
+    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
+    scale_y_continuous(label = label_number_si()) +
+    ggtitle("Covid Mortality Rate for Each Continent in 2021") +
+    labs(y= "Number of Deaths", x="Month")
 ```
-For the poverty graph we once again went back to the 5 main continents and gathered data for their total population of the continent in 2019, the number of individuals in poverty in 2020, and the poverty rate percentage in 2020. This table was made to once again look at the poverty rate and if there was a trend seen fodatar the number of college graduates for each continent or vaccination percentage in relation to poverty in that continent. The poverty threshold was determined as the minimum amount of income deemed adequate to live off of in that continent. 
+
+## Vaccination Data Graph
+```{r MAP DATA}
+Vaccination_Across_Months_LL_2_ <- read_excel("Vaccination_Across_Months_LL (2).xlsx")
+data2 <- Vaccination_Across_Months_LL_2_ 
+data2$long <- as.data.frame(data2$Long)
+data2$lat <- as.data.frame(data2$Lat) 
+data.SP <- SpatialPointsDataFrame(data2[,c(5,6)], data2[,-c(5,6)]) 
+
+m <- leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(data=data2, lng = ~Long, lat = ~Lat, popup = ~Fully_Vaccinated)
+m
+```
 
 
 
