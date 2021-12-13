@@ -2251,8 +2251,8 @@ function init_posts_list() {
 <p>REPRESENTATION OF CONTINENTS IS AS FOLLOWS:</p>
 <p>North America: US</p>
 <p>South America: Brazil</p>
-<p>Asia: India, Singapore, China, and Russia</p>
-<p>Europe: UK, Germany</p>
+<p>Asia: India, Singapore, China, and Russia (ish)</p>
+<p>Europe: UK, Germany, Russia (ish)</p>
 <p>Africa: Tunisia</p>
 <h2 id="stem-majors">Stem Majors</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2281,7 +2281,7 @@ function init_posts_list() {
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/income%20support-1.png" width="624" /></p>
 </div>
-<p>Income support for our project is defined as the relative or amount of income or percentage of income that would be reimbursed for those who lost their job, lost pay, were on unemployment, or those who had to miss work due to the virus (quarantine or exposure) in February of 2021. We used data from February because this is when all continents had the same amount of access to the vaccine and when the virus was at its most deadly without the vaccine. We once again specifically focused on the 9 countries that had the highest number of STEM graduates. There were three categories for income support: less than 50% (less that 50% of the lost wages were returned to the individual), greater than 50% (greater than than 50% of the lost wages were returned to the individual) or none (no loss of wages were reimbursed to the individual. We wanted to look at these countries specifically to see if there was a relationship between the amount of income recovered and the STEM graduates, the stay at home requirements, and the mask mandates.</p>
+<p>Income support for our project is defined as the relative or amount of income or percentage of income that would be reimbursed for those who lost their job, lost pay, were on unemployment, or those who had to miss work due to the virus (quarantine or exposure) in February of 2021. We used data from February because this is when all continents had RELATIVELY the same amount of access to the vaccine and when the virus was at it’s highest (without the vaccine). We once again specifically focused on the 9 countries that had the highest number of STEM graduates. There were three categories for income support: less than 50% (less that 50% of the lost wages were returned to the individual), greater than 50% (greater than than 50% of the lost wages were returned to the individual) or none (no loss of wages were reimbursed to the individual. We wanted to look at these countries specifically to see if there was a relationship between the amount of income recovered and the STEM graduates, the stay at home requirements, and the mask mandates.</p>
 <h2 id="stay-at-home-requirements">Stay at Home Requirements</h2>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/stay%20at%20home%20requirements%20(exclude%20NA)-1.png" width="624" /></p>
@@ -2296,7 +2296,7 @@ function init_posts_list() {
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/vaccination%20percentages%20as%20a%20stacked%20bar%20graph-1.png" width="624" /></p>
 </div>
-<p>Above We have data for the percent fully vaccinated, percent partially vaccinated, number of fully vaccinated individuals and number of partially vaccinated individuals in November to show how far we have come in our vaccinations.</p>
+<p>Above We have data for the percent fully vaccinated, percent partially vaccinated, number of fully vaccinated individuals and number of partially vaccinated individuals in November to show how far we have come in our vaccinations. This data is relative to population and not numberical values for each vaccination.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/fully%20vaccinated%20from%20feb%20to%20november-1.png" width="624" /></p>
 </div>
@@ -2308,11 +2308,11 @@ function init_posts_list() {
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/boxplot%20fully%20vaccinated%20individuals-1.png" width="624" /></p>
 </div>
-<p>This graph shows a boxplot for the fully vaccinated individuals across the 9 months, we wanted to show that the medians for all of the months and the countries were relatively the same.</p>
+<p>This graph shows a boxplot for the fully vaccinated individuals across the 9 months, we wanted to show that the medians for all of the months and the countries were relatively the same over the time period (February to November). We want to ignore the Months across the bottom of the plot. The data is representing the min,Q1, median, Q3, and the max amount of vaccines given across the whole time period.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/boxplot%20partially%20vaccinated%20individuals-1.png" width="624" /></p>
 </div>
-<p>This graph shows a boxplot for the partially vaccinated individuals across the 9 months, we wanted to show that the medians for all of the months and the countries were relatively the same, except for Asia which has a much higher median throughout the months.</p>
+<p>This graph shows a boxplot for the partially vaccinated individuals across the 9 months, we wanted to show that the medians for all of the months and the countries were relatively the same, except for Asia which has a much higher median throughout the months. We want to ignore the Months across the bottom of the plot. The data is representing the min,Q1, median, Q3, and the max amount of vaccines given across the whole time period. The minimum being the starting point in february and the maximum being the ending point of November. The spike in partially vaccinated individuals in Asia could be due to a slow start on the importance of the vaccines (they had a low infection rate initially) and the supply issues that occured in India and China.</p>
 <h2 id="mortality-rate">Mortality Rate</h2>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/mortality%20rate%20with%20ggplot%20and%20geom%20line%20with%20discrete%20variables-1.png" width="624" /></p>
@@ -2321,7 +2321,7 @@ function init_posts_list() {
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="graphs_files/figure-html5/boxplot%20for%20mortality%20rates%20at%20different%20points%20in%20the%20year-1.png" width="624" /></p>
 </div>
-##Shiny Vaccination Graph with Longitudes and Latitudes
+<h2 id="leaflet-vaccination-graph-with-longitudes-and-latitudes">leaflet Vaccination Graph with Longitudes and Latitudes</h2>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -2339,10 +2339,10 @@ function init_posts_list() {
 <span class='va'>m</span>
 </code></pre>
 </div>
-<div id="htmlwidget-f5b1961b87966c93db61" style="width:624px;height:384px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f5b1961b87966c93db61">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916],[-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},[104688,2400000,10760000,27170000,40600000,56850000,88190000,135070000,182070000,220360000,7960000,31300000,67330000,123690000,162650000,199420000,227000000,254870000,283670000,311240000,5,330257,4100000,4900000,8670000,15670000,23160000,39240000,61320000,82690000,2190000,11370000,29530000,64390000,106990000,162260000,290420000,1360000000,1740000000,2010000000,3430000,13510000,34710000,66890000,130560000,214610000,301910000,361330000,392670000,412460000],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-11.858997,48.982319],"lng":[-104.096421,104.067363]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-25bf4e8f2f5e4c24f590" style="width:624px;height:384px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-25bf4e8f2f5e4c24f590">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,-11.858997,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,48.982319,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,6.453405,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,30.654249,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916,46.586916],[-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-55.5184,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,-104.096421,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,21.969834,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,104.067363,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303,2.568303],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},[104688,2400000,10760000,27170000,40600000,56850000,88190000,135070000,182070000,220360000,7960000,31300000,67330000,123690000,162650000,199420000,227000000,254870000,283670000,311240000,5,330257,4100000,4900000,8670000,15670000,23160000,39240000,61320000,82690000,2190000,11370000,29530000,64390000,106990000,162260000,290420000,1360000000,1740000000,2010000000,3430000,13510000,34710000,66890000,130560000,214610000,301910000,361330000,392670000,412460000],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-11.858997,48.982319],"lng":[-104.096421,104.067363]}},"evals":[],"jsHooks":[]}</script>
 </div>
-<p>In order to do our shiny “app” we used the shiny and leaflet package. We wanted to show the points of the graph for the vaccinations in each continent. This however did not exactly happen, we hoped for a more simplistic code in order to do this but we were not super well adapted to shiny applications.</p>
+<p>In order to a more interactive graph we used the leaflet package. We wanted to show the points of the graph for the vaccinations in each continent. This however did not exactly happen, we hoped for a more simplistic code in order to do this but we were not super well adapted to this application. We also attempted a shiny app but it wouldn’t run properly in R. Manipulating the data was pretty overwhelming as well because we created our own data plots using the data from ourworldindata.</p>
 <p>One error we got repeatedly was “error: $ operator is invalid for atomic vectors Execution halted” this happened because our data was initially atomic vector and then we made them recursive and more like a list.</p>
 <p>Being recursive for a type of object in R means that you can have this object holding its own type as an entry. Atomic is the opposite. Vectors are atomic and lists are recursive as we checked, out data (data2) is proved to be recursive.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2375,8 +2375,12 @@ function init_posts_list() {
 </div>
 <h2 id="overall-findings">Overall Findings</h2>
 <ul>
-<li>Europe seems to hsave the</li>
+<li>The most Vaccinations (fully and partially) were done in Asia, this is most likely due to their high population of around 4.56 billion, much higher in comparison to lets say africa with 1.2 billion people.</li>
+<li>There is still a lack of access for lost of people in Africa to get the vaccine but luckily we have show that there isn’t an large amount of deaths either.</li>
+<li>As a continent Africa has the lowest amount of average years of education and stem graduates, they also have the highest poverty rate and little to no financial compensation if an individual has covid -19.</li>
+<li>There is a inverse relationship between the vaccinations (of any kind) and the mortality rate. It is seen that the more vaccinated individuals the less likely to contract covid and the even more less likely to die from it.</li>
 </ul>
+<p>—More meaningful data would be having deaths or vaccinations relative to population. This would be a better representation of the data so it is not skewed based on the amount of people living in that continent.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

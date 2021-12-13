@@ -69,9 +69,9 @@ North America: US
 
 South America: Brazil
 
-Asia: India, Singapore, China, and Russia
+Asia: India, Singapore, China, and Russia (ish)
 
-Europe: UK, Germany
+Europe: UK, Germany, Russia (ish)
 
 Africa: Tunisia
 
@@ -132,7 +132,7 @@ ggplot() +
    ggtitle("Income Support in Each Country for February, 2021")
 ```
 
-Income support for our project is defined as the relative or amount of income or percentage of income that would be reimbursed for those who lost their job, lost pay, were on unemployment, or those who had to miss work due to the virus (quarantine or exposure) in February of 2021. We used data from February because this is when all continents had the same amount of access to the vaccine and when the virus was at its most deadly without the vaccine. We once again specifically focused on the 9 countries that had the highest number of STEM graduates. There were three categories for income support: less than 50% (less that 50% of the lost wages were returned to the individual), greater than 50% (greater than than 50% of the lost wages were returned to the individual) or none (no loss of wages were reimbursed to the individual. We wanted to look at these countries specifically to see if there was a relationship between the amount of income recovered and the STEM graduates, the stay at home requirements, and the mask mandates. 
+Income support for our project is defined as the relative or amount of income or percentage of income that would be reimbursed for those who lost their job, lost pay, were on unemployment, or those who had to miss work due to the virus (quarantine or exposure) in February of 2021. We used data from February because this is when all continents had RELATIVELY the same amount of access to the vaccine and when the virus was at it's highest (without the vaccine). We once again specifically focused on the 9 countries that had the highest number of STEM graduates. There were three categories for income support: less than 50% (less that 50% of the lost wages were returned to the individual), greater than 50% (greater than than 50% of the lost wages were returned to the individual) or none (no loss of wages were reimbursed to the individual. We wanted to look at these countries specifically to see if there was a relationship between the amount of income recovered and the STEM graduates, the stay at home requirements, and the mask mandates. 
 
 
 ## Stay at Home Requirements
@@ -169,14 +169,14 @@ p<-ggplot(Vaccination_percentages, aes(x= Continent,
 p +
    geom_bar(stat = "identity") +    
    theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8))+
-   labs(x= "Continent", y = "Rate", title = "Percentages of Continents Vaccinated on Nov. 1st, 2021",
+   labs(x= "Continent", y = "Rate", title = "Percentages of Continents Vaccinated Nov. 1st, 2021",
         caption = "ourworld.org data")+  
    geom_text(aes(label = Rate), position = position_stack(vjust = 0.5), size = 3) + labs(y="Percent Fully/Partially Vaccinated") + 
   scale_fill_brewer(palette= "Set3", name="Percent Vaccination", labels =c("Percent Fully Vaccinated", "Percent Partially Vaccinated"))
  
 ```
 
-Above We have data for the percent fully vaccinated, percent partially vaccinated, number of fully vaccinated individuals and number of partially vaccinated individuals in November to show how far we have come in our vaccinations.
+Above We have data for the percent fully vaccinated, percent partially vaccinated, number of fully vaccinated individuals and number of partially vaccinated individuals in November to show how far we have come in our vaccinations. This data is relative to population and not numberical values for each vaccination.
 
 ```{r fully vaccinated from feb to november}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
@@ -207,25 +207,25 @@ This graph displays the Number of  cumulative partially vaccinated individuals i
 ```{r boxplot fully vaccinated individuals}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
  ggplot(Vaccination_Across_Months_2_, aes(x=fct_inorder(Month_of_Death), y=Fully_Vaccinated, group=Continent, color=Continent)) +
-    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
+    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 180, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
     ggtitle("Number of Fully Vaccinated individuals in Each Continent for 2021") +
-    labs(y= "Number of Fully Vaccinated ", x="Month")
+    labs(y= "Number of Fully Vaccinated ", x="FEBRUARY - NOVEMBER")
 
 ```
 
-This graph shows a boxplot for the fully vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same. 
+This graph shows a boxplot for the fully vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same over the time period (February to November). We want to ignore the Months across the bottom of the plot. The data is representing the min,Q1, median, Q3, and the max amount of vaccines given across the whole time period.
 
 ```{r boxplot partially vaccinated individuals}
 Vaccination_Across_Months_2_ <- read_excel("Vaccination_Across_Months (2).xlsx")
  ggplot(Vaccination_Across_Months_2_, aes(x= fct_inorder(Month_of_Death), y=Partially_Vaccinated, group=Continent, color=Continent)) +
-    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
+    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 180, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
     ggtitle("Number of Partially Vaccinated Individuals in Each Continent for 2021") +
-    labs(y= "Number of Partially Vaccinated ", x="Month")
+    labs(y= "Number of Partially Vaccinated ", x="FEBRUARY - NOVEMBER ")
 ```
 
-This graph shows a boxplot for the partially vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same, except for Asia which has a much higher median throughout the months.  
+This graph shows a boxplot for the partially vaccinated individuals across the 9 months, we wanted to show that the  medians for all of the months and the countries were relatively the same, except for Asia which has a much higher median throughout the months. We want to ignore the Months across the bottom of the plot. The data is representing the min,Q1, median, Q3, and the max amount of vaccines given across the whole time period. The minimum being the starting point in february and the maximum being the ending point of November. The spike in partially vaccinated individuals in Asia could be due to a slow start on the importance of the vaccines (they had a low infection rate initially) and the supply issues that occured in India and China.
 
 ## Mortality Rate
 ```{r mortality rate with ggplot and geom line with discrete variables}
@@ -244,19 +244,20 @@ As for Confirmed deaths and mortality we once again start our data in February o
 ```{r boxplot for mortality rates at different points in the year}
 Morality_Rate <- read_excel("Morality_Rate.xlsx")
  ggplot(Morality_Rate, aes(x= fct_inorder(Month_of_Death), y=Death_Count, group=Continent, color=Continent)) +
-    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 45, hjust = 0.8)) +
+    geom_boxplot() + theme(legend.position = "right", axis.text.x = element_text(angle = 180, hjust = 0.8)) +
     scale_y_continuous(label = label_number_si()) +
     ggtitle("Covid Mortality Rate for Each Continent in 2021") +
-    labs(y= "Number of Deaths", x="Month")
+    labs(y= "Number of Deaths", x="FEBRUARY-NOVEMBER")
 ```
 
-##Shiny Vaccination Graph with Longitudes and Latitudes
+## leaflet Vaccination Graph with Longitudes and Latitudes
+
 ```{r shinyapp showing code on purpose}
 knitr::opts_chunk$set(echo=TRUE)
  
 ```
 
-```{r shiny app}
+```{r leaflet plot}
 VaccinationAcross_LL <- read_excel("VaccinationAcross_LL.xlsx")
 data2 <- VaccinationAcross_LL
 data2$long <- as.data.frame(data2$Long)
@@ -269,7 +270,7 @@ m <- leaflet() %>%
 m
 ```
 
-In order to do our shiny "app" we used the shiny and leaflet package. We wanted to show the points of the graph for the vaccinations in each continent. This however did not exactly happen, we hoped for a more simplistic code in order to do this but we were not super well adapted to shiny applications. 
+In order to a more interactive graph we used the leaflet package. We wanted to show the points of the graph for the vaccinations in each continent. This however did not exactly happen, we hoped for a more simplistic code in order to do this but we were not super well adapted to this application. We also attempted a shiny app but it wouldn't run properly in R. Manipulating the data was pretty overwhelming as well because we created our own data plots using the data from ourworldindata.
 
 
 
@@ -294,4 +295,10 @@ is.atomic(data2)
 ```
 ## Overall Findings
 
-- Europe seems to hsave the 
+- The most Vaccinations (fully and partially) were done in Asia, this is most likely due to their high population of around 4.56 billion, much higher in comparison to lets say africa with 1.2 billion people. 
+- There is still a lack of access for lost of people in Africa to get the vaccine but luckily we have show that there isn't an large amount of deaths either. 
+- As a continent Africa has the lowest amount of average years of education and stem graduates, they also have the highest poverty rate and little to no financial compensation if an individual has covid -19.
+- There is a inverse relationship between the vaccinations (of any kind) and the mortality rate. It is seen that the more vaccinated individuals the less likely to contract covid and the even more less likely to die from it. 
+
+
+---More meaningful data would be having deaths or vaccinations relative to population. This would be a better representation of the data so it is not skewed based on the amount of people living in that continent.
