@@ -1,51 +1,14 @@
----
-title: "shiny"
-author: "snowbcat"
-date: "12/9/2021"
-output: html_document
----
-
-```{r packages, include=FALSE}
-library(shiny)
-library(leaflet) #interaction map
-library(RColorBrewer)
-library(shinythemes)
-library(data.table)
-library(randomForest)
-library(sp)
-```
 
 
 
-## Vaccination Graph
-```{r}
-Vaccination_Across_Months_LL_2_ <- read_excel("Vaccination_Across_Months_LL (2).xlsx") 
-data2 <- Vaccination_Across_Months_LL_2_ 
-data2[["long"]] <- as.data.frame(data2[["Long"]])
-data2[["lat"]] <- as.data.frame(data2[["Lat"]]) 
-data.SP <- SpatialPointsDataFrame(data2[,c(5,6)], data2[,-c(5,6)]) 
-
-m <- leaflet() %>% 
-  addTiles() %>% 
-  addMarkers(data=data2, lng = ~Long, lat = ~Lat, popup = ~Fully_Vaccinated)
-m
-  
-```
 
 
 
-```{r}
-is.atomic(data2)
-```
 
-Being recursive for a type of object in R means that you can have this object holding its own type as an entry. Atomic is the opposite. Vectors are atomic and lists are recursive as we checked, out data (data2) is proved to be recursive.
 
-```{r}
-is.atomic(Vaccination_Across_Months_LL_2_ )
-```
-```{r}
-is.atomic(data2[["long"]])
-```
+
+
+
 
 
 
