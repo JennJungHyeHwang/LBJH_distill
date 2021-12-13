@@ -214,8 +214,8 @@ Morality_Rate <- read_excel("Morality_Rate.xlsx")
 ```{r MAP DATA}
 Vaccination_Across_Months_LL_2_ <- read_excel("Vaccination_Across_Months_LL (2).xlsx")
 data2 <- Vaccination_Across_Months_LL_2_ 
-data2$long <- as.data.frame(data2$Long)
-data2$lat <- as.data.frame(data2$Lat) 
+data2[["long"]] <- as.data.frame(data2[["Long"]]) #as.numeric was there
+data2[["lat"]] <- as.data.frame(data2[["Lat"]]) 
 data.SP <- SpatialPointsDataFrame(data2[,c(5,6)], data2[,-c(5,6)]) 
 
 m <- leaflet() %>% 
